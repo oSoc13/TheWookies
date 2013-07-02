@@ -29,8 +29,8 @@ function get_milestones($client, $username, $reponame){
 
     try { 
 
-        $issues = $client->api('issue')->Milestones()->all($username, $reponame, array('state' => 'open'));
-
+        $milestones = $client->api('issue')->Milestones()->all($username, $reponame, array('state' => 'open'));
+        return $milestones;
     } catch (Exception $e) {  
         # do something with e
     } 
@@ -42,7 +42,7 @@ function get_issues($client, $username, $reponame, $milestone){
     try { 
 
         $issues = $client->api('issue')->all($username, $reponame, array('state' => 'open', 'milestone'=> $milestone));
-
+        return $issues;
     } catch (Exception $e) {  
         # do something with e
     } 
