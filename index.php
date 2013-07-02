@@ -25,11 +25,23 @@ function get_repos($client, $username){
 }
 
 
-function get_issues($client, $username, $reponame){
+function get_milestones($client, $username, $reponame){
 
     try { 
 
         $issues = $client->api('issue')->Milestones()->all($username, $reponame, array('state' => 'open'));
+
+    } catch (Exception $e) {  
+        # do something with e
+    } 
+ 
+}
+
+function get_issues($client, $username, $reponame, $milestone){
+
+    try { 
+
+        $issues = $client->api('issue')->all($username, $reponame, array('state' => 'open', 'milestone'=> $milestone));
 
     } catch (Exception $e) {  
         # do something with e
