@@ -3,6 +3,9 @@
 .Trashes
 Thumbs.db
 
+# IDE generated files
+.idea
+
 # Config
 config
 Config.php
