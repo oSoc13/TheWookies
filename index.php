@@ -17,7 +17,6 @@ function get_repos($client, $username){
         $repositories = $client->api('user')->repositories($username);
         foreach ($repositories as $repo) {
             $reponame = $repo['name'];
-            echo $reponame."<br />";
             get_issues($client,$username, $reponame);
         }
     } catch (Exception $e) {  
@@ -30,7 +29,7 @@ function get_issues($client, $username, $reponame){
 
     try { 
 
-        $issues = $client->api('issue')->all('oSoc13', $reponame, array('state' => 'open'));
+        $issues = $client->api('issue')->Milestones()->all($username, $reponame, array('state' => 'open'));
 
     } catch (Exception $e) {  
         # do something with e
